@@ -171,48 +171,43 @@
 												</div>
 												<div class="container">
 													<div class="row gx-1" style="margin-top: 20px">
-														<div class="col-2">
+														<div class="loader-container">
 															<div class="loader"></div>
-														</div>
-														<div class="col-10 my-auto">
-												                        <img class="loading-image" style="width: 45px; height: 45px; display: none" src="assets\img\ASlogo.png" />Checking certificate has not been tampered with
-
-															</div>
-													</div>
-													<div class="row gx-1" style="margin-top: 20px">
-														<div class="col-2">
-															<div class="loader"></div>
-														</div>
-														<div class="col-10 my-auto">
 															<img class="loading-image" style="width: 45px; height: 45px; display: none" src="assets\img\ASlogo.png" />
-
-															Checking certificate has not expired</div>
+															<div class="loading-text">Checking certificate has not been tampered with</div>
+														</div>
+														
 													</div>
 													<div class="row gx-1" style="margin-top: 20px">
-														<div class="col-2">
+														<div class="loader-container">
 															<div class="loader"></div>
+															<img class="loading-image" style="width: 45px; height: 45px; display: none" src="assets\img\ASlogo.png" />
+															<div class="loading-text">Checking certificate has not expired</div>
 														</div>
-														<div class="col-10 my-auto">
-												                        <img class="loading-image" style="width: 45px; height: 45px; display: none" src="assets\img\ASlogo.png" />
-
-															Checking not revoked by issuer</div>
 													</div>
 													<div class="row gx-1" style="margin-top: 20px">
-														<div class="col-2">
+														<div class="loader-container">
 															<div class="loader"></div>
+															<img class="loading-image" style="width: 45px; height: 45px; display: none" src="assets\img\ASlogo.png" />
+															<div class="loading-text">Checking not revoked by issuer</div>
 														</div>
-														<div class="col-10 my-auto">
-												                        <img class="loading-image" style="width: 45px; height: 45px; display: none" src="assets\img\ASlogo.png" />
-
-															Checking authenticity</div>
 													</div>
-													<div class="row gx-1" style="margin-top: 20px; display: none" >
-														<div class="col-2">
-															<div class="loader" ></div>
+													<div class="row gx-1" style="margin-top: 20px">
+														<div class="loader-container">
+															<div class="loader"></div>
+															<img class="loading-image" style="width: 45px; height: 45px; display: none" src="assets\img\ASlogo.png" />
+															<div class="loading-text">Checking authenticity</div>
 														</div>
-														<div class="col-10 my-auto" ></div>
+													</div>
+													<div class="row gx-1" style="margin-top: 20px">
+														<div class="loader-container">
+															<div class="loader"></div>
+															<img class="loading-image" style="width: 45px; height: 45px; display: none" src="assets\img\ASlogo.png" />
+															<div class="loading-text">This is a valid certificate</div>
+														</div>
 													</div>
 												</div>
+											</div>
 											</div>
 										</div>
 									</div>
@@ -314,17 +309,17 @@
 
 
 
-// Function to replace the loader with the image
+// Function to replace the loader with the image after a delay
 function replaceLoaderWithImage() {
     var loaders = document.querySelectorAll(".loader");
     var images = document.querySelectorAll(".loading-image");
 
     // Hide the loaders and show the images
-    loaders.forEach(function (loader) {
-        loader.style.display = "none";
-    });
-    images.forEach(function (image) {
-        image.style.display = "block"; // Show the image
+    loaders.forEach(function (loader, index) {
+        setTimeout(function () {
+            loader.style.display = "none";
+            images[index].style.display = "block"; // Show the image
+        }, (index + 1) * 2000); // Replace with increasing delay (2 seconds per image)
     });
 }
 
@@ -341,8 +336,8 @@ function handleButtonClick() {
         image.style.display = "none";
     });
 
-    // Set a timeout to replace the loaders with the image after 3 seconds
-    setTimeout(replaceLoaderWithImage, 3000);
+    // Set a timeout to replace the loaders with the images
+    setTimeout(replaceLoaderWithImage, 3000); // Initial delay is 3 seconds
 }
 
 // Attach the click event handler to the button
