@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+	
+<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<meta name="description" content="" />
+		<meta name="author" content="" />
+		<title>Certificate Verifier</title>
+		<!-- <link rel="icon" type="image/png" href="assets/img/gcc-logo.png" /> -->
+		<link rel="shortcut icon" href="assets/img/ASlogo.png" type="image/x-icon" />
+		<!-- Font Awesome icons (free version)-->
+		<script src="../use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+		<!-- Google fonts-->
+		<link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
+		<link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
+		<!-- Core theme CSS (includes Bootstrap)-->
+		<link href="css/styles.css" rel="stylesheet" />
+		<link rel="stylesheet" href="css/my-style.css" />
+		<script src="../code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+		<script src="js/verify.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+	</head>
+	<body id="page-top">
+		<!-- Navigation-->
+		<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+			<a class="navbar-brand js-scroll-trigger" href="#page-top">
+				<span class="d-block d-lg-none">Certificate Verifier</span>
+				<span class="d-none d-lg-block"
+					><img class="img-fluid rounded-circle mx-auto mb-2" src="assets/img/AS.png" alt="Certificate verifier logo" style="width: 90%"
+				/></span>
+			</a>
+			<button
+				class="navbar-toggler"
+				type="button"
+				data-bs-toggle="collapse"
+				data-bs-target="#navbarResponsive"
+				aria-controls="navbarResponsive"
+				aria-expanded="false"
+				aria-label="Toggle navigation"
+			>
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav">
+					<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#certificate">Certificate</a></li>
+					<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#general-information">General Information</a></li>
+					<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#share">Share</a></li>
+					<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#wallet">Add to wallet</a></li>
+					
+				</ul>
+			</div>
+		</nav>
+		<!-- Page Content-->
+		<div class="container-fluid p-0">
+			<!-- About-->
+			<section class="resume-section" id="certificate">
+				<div class="resume-section-content">
+					<div class="container text-center">
+						<div class="row">
+							<div class="col">
+								<h3 id="subtitleTitle" class="subtitleTitle" style="font-weight: normal"></h3>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								<!-- here use data of "Full Name"  -->
+								<h4 class="subtitle"><span class="text-primary">Issued to: </span>
+									<span id="fullName1"></span>
+								</h4>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-12">
+								<!-- here use image of gdrive using "Links3" id -->
+								<img src="" alt="certificate" id="certificateImage" style="width: 80%" />
+								
+							</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								<!-- here use that button which we have created in result.html to download a file  -->
+								<!-- <button type="button" class="btn btn-primary mt-3" onclick="downloadPDF()">Download Certificate</button> -->
+								<a id="downloadButton" class="btn btn-primary mt-3" href="" download="certificate.jpg" >Download Certificate</a>
+
+							</div>
+						</div>
+					</div>
+					
+				</div>
+			</section>
+			<hr class="m-0" />
+			<!-- Experience-->
+			<section class="resume-section" id="general-information">
+				<div class="resume-section-content">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-6 col-xs-12">
+								<div class="container">
+									<div class="row">
+										<div class="col">
+											<h5 class="subtitle">
+												<span class="text-primary">Certificate Name: </span> <span id="certificateName"></span>
+												<!-- here use "Interested in:" data  -->
+											</h5>
+											<p class="subtitleTitle information"></p>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col">
+											<h5 class="subtitle"><span class="text-primary">Issued to: </span><span id="fullName2"></span></h5>	<!-- here use data of "Full Name"  -->
+
+											<p class="nameTitle information"></p>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col">
+											<h6 class="subtitle"><span class="text-primary">Issued by: </span></h6> 
+											<!-- we will see this later  -->
+											<p class="information"><img  class="pr-1" style="height: 55px; width: 225px" src="assets\img\asterisc_logo.png" /><span id="issuedBy"></span></p>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col">
+											<h6 class="subtitle"><span class="text-primary">Issued on: </span><span id="issuedDate"></span></h6>
+											<!-- use "Date"  -->
+											<p id="issuedOn" class="information"></p>
+										</div>
+									</div>
+									<!-- <div class="row">
+										<div class="col">
+											<h6 class="subtitle"><span class="text-primary">Transaction ID: </span></h6>
+											<p id="tx" class="information"></p>
+										</div>
+									</div> -->
+									<div class="row">
+										<div class="col">
+											<h6 class="subtitle"><span class="text-primary">Public key: </span><span id="publicKey"></span></h6>
+											<!-- use "Links3"  -->
+											<p id="publicKey" class="information"></p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6 col-xs-12">
+								<!-- Button trigger modal -->
+								<div id="isVerifiedBg" class="p-3 isVerifiedContainer accordion accordion-flush">
+									<img id="isVerifiedLogo" class="pr-1" src="assets\img\ASlogo.png" style="height: 25px; width: 25px" /><strong id="isVerified">Verified</strong>
+									<div id="isVerifiedDesc">
+										This is a valid certificate</div>
+									<button type="button" class="btn btn-primary mt-2 mb-3" data-bs-toggle="collapse" data-bs-target="#myAccordion">Verify again</button>
+									<div class="accordion-item" style="background-color: inherit">
+										<h2 class="accordion-header" id="flush-headingOne"></h2>
+										<div class="accordion-collapse collapse" id="myAccordion" aria-labelledby="flush-headingOne" data-bs-parent="#isVerifiedBg">
+											<div class="accordion-body">
+												<div class="container">
+													<div class="row">
+														<div class="col-lg-4" id="picture"><img style="width: 100%; max-width: 100px" src="assets\img\ASlogo.png" />
+															</div>
+														<div class="col-lg-8">
+															
+															
+															<div class="row" style="font-size: large" >Be smart in a smart world. What counts in a digital workplace?
+																</div>
+															<div class="row" style="font-size: large" id="fullName3"></div>
+															<div class="row"></div><span style="font-size: small">Issued on: <span id="issuedDate2"></span></span></div>
+															<!-- <div class="row" style="font-size: small" id="issuedDate2"></div> -->
+														</div>
+													</div>
+												</div>
+												<div class="container">
+													<div class="row gx-1" style="margin-top: 20px">
+														<div class="col-2">
+															<div class="loader"></div>
+														</div>
+														<div class="col-10 my-auto">
+												                        <img class="loading-image" style="width: 45px; height: 45px; display: none" src="assets\img\ASlogo.png" />Checking certificate has not been tampered with
+
+															</div>
+													</div>
+													<div class="row gx-1" style="margin-top: 20px">
+														<div class="col-2">
+															<div class="loader"></div>
+														</div>
+														<div class="col-10 my-auto">
+															<img class="loading-image" style="width: 45px; height: 45px; display: none" src="assets\img\ASlogo.png" />
+
+															Checking certificate has not expired</div>
+													</div>
+													<div class="row gx-1" style="margin-top: 20px">
+														<div class="col-2">
+															<div class="loader"></div>
+														</div>
+														<div class="col-10 my-auto">
+												                        <img class="loading-image" style="width: 45px; height: 45px; display: none" src="assets\img\ASlogo.png" />
+
+															Checking not revoked by issuer</div>
+													</div>
+													<div class="row gx-1" style="margin-top: 20px">
+														<div class="col-2">
+															<div class="loader"></div>
+														</div>
+														<div class="col-10 my-auto">
+												                        <img class="loading-image" style="width: 45px; height: 45px; display: none" src="assets\img\ASlogo.png" />
+
+															Checking authenticity</div>
+													</div>
+													<div class="row gx-1" style="margin-top: 20px; display: none" >
+														<div class="col-2">
+															<div class="loader" ></div>
+														</div>
+														<div class="col-10 my-auto" ></div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="accordion accordion-flush" id="accordionFlushExample"></div>
+
+								<!-- Modal -->
+							</div>
+						</div>
+					</div>
+				</div>
+				
+			</section>
+			<hr class="m-0" />
+			<!-- Education-->
+			<section class="resume-section" id="share">
+				
+				<div class="container text-center">
+					<div class="row mb-5">
+						<div class="col"><h2 class="subtitle">Share your certificate on social media</h2></div>
+					</div>
+					<div class="row">
+						
+						<div class="col">
+							<div class="social-icons">
+								<a class="social-icon" id="linkedinhref" href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+								<a class="social-icon" id="emailhref" href="#"><i class="fa-solid fa-envelope"></i></a>
+								<a class="social-icon" id="twitterhref" href="#!"><i class="fa-brands fa-twitter"></i></a>
+								<a class="social-icon" id="facebookhref" href="#!"><i class="fa-brands fa-facebook-f"></i></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<hr class="m-0" />
+			<section class="resume-section" id="wallet">
+				<div class="container text-center">
+					<div class="row mb-5">
+						<div class="col"><h2 class="subtitle" s>Add your certificate to your mobile wallet</h2></div>
+					</div>
+					<div class="row gy-5">
+						<div class="col-md-6">
+							<a id="wallet_apple" style="text-decoration: none" href="#"><img src="assets/img/apple.svg" alt="add to apple wallet" style="width: 15rem" /></a>
+						</div>
+						<div class="col-md-6">
+							<a id="wallet_android" style="text-decoration: none" href="#"
+								><img src="assets/img/android.svg" alt="add to apple wallet" style="width: 15rem"
+							/></a>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+		<!-- Bootstrap core JS-->
+		<script src="../cdn.jsdelivr.net/npm/bootstrap%405.1.3/dist/js/bootstrap.bundle.min.js"></script>
+		<!-- Core theme JS-->
+		<script src="js/scripts.js"></script>
+		<script>
+			document.addEventListener("DOMContentLoaded", () => {
+				const resultDiv = document.getElementById("result");
+	
+				// Get data from query parameter
+				const urlParams = new URLSearchParams(window.location.search);
+				const data = JSON.parse(decodeURIComponent(urlParams.get("data")));
+	
+				// Populate HTML elements with data
+				const fullNameElement1 = document.getElementById("fullName1");
+				const fullNameElement2 = document.getElementById("fullName2");
+				const fullNameElement3 = document.getElementById("fullName3");
+	
+				const certificateNameElement = document.getElementById("certificateName");
+				const issuedDateElement = document.getElementById("issuedDate");
+				const issuedDateElement2 = document.getElementById("issuedDate2");
+				const publicKeyElement = document.getElementById("publicKey");
+				const certificateImageElement = document.getElementById("certificateImage");
+				const downloadButtonElement = document.getElementById("downloadButton");
+	
+	
+				fullNameElement1.textContent = data["Full Name"];
+				fullNameElement2.textContent = data["Full Name"];
+				fullNameElement3.textContent = data["Full Name"];
+				certificateNameElement.textContent = getFirstEntry(data["Interested in:"]);
+				issuedDateElement.textContent = data["Date"];
+				issuedDateElement2.textContent = data["Date"];
+				publicKeyElement.textContent = data["Links3"];
+	
+				if (data["Links3"]) {
+					certificateImageElement.src = `https://drive.google.com/uc?id=${data["Links3"]}`;
+					downloadButtonElement.href = `https://drive.google.com/uc?export=download&id=${data["Links3"]}`;
+				}
+	
+				// Helper function to get the first entry from a comma-separated list
+				function getFirstEntry(str) {
+					const entries = str.split(",");
+					return entries.length > 0 ? entries[0].trim() : str;
+				}
+			});
+
+
+
+
+
+// Function to replace the loader with the image
+function replaceLoaderWithImage() {
+    var loaders = document.querySelectorAll(".loader");
+    var images = document.querySelectorAll(".loading-image");
+
+    // Hide the loaders and show the images
+    loaders.forEach(function (loader) {
+        loader.style.display = "none";
+    });
+    images.forEach(function (image) {
+        image.style.display = "block";
+    });
+}
+
+// Call the function after 3 seconds to replace the loader with the image
+setTimeout(replaceLoaderWithImage, 3000);
+
+		</script>
+	</body>
+
+</html>

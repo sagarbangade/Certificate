@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Search and Display</title>
+    <style>
+        /* Add your CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        h1 {
+            text-align: center;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result-container {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Data Search and Display</h1>
+        <input type="text" id="searchInput" placeholder="Enter Search Criteria">
+        <button id="searchButton">Search</button>
+        <div id="result"></div>
+    </div>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const searchButton = document.getElementById("searchButton");
+            const resultDiv = document.getElementById("result");
+
+            searchButton.addEventListener("click", () => {
+                const searchInput = document.getElementById("searchInput").value.trim(); // Remove extra spaces
+
+                // Replace with your data source (JSON file or API)
+                fetch("data.json")
+                    .then(response => response.json())
+                    .then(data => {
+                        const matchingResults = data.filter(item => 
+                            item["Full Name"].toLowerCase().includes(searchInput.toLowerCase()) ||
+                            getFirstEntry(item["Interested in:"]).toLowerCase() === searchInput.toLowerCase() ||
+                            item["Date"].toLowerCase().includes(searchInput.toLowerCase()) ||
+                            item["Links3"].toLowerCase().includes(searchInput.toLowerCase()) ||
+                            item["Email"].toLowerCase() === searchInput.toLowerCase()
+                        );
+
+                        resultDiv.innerHTML = ""; // Clear previous result
+
+                        if (matchingResults.length > 0) {
+                            matchingResults.forEach(result => {
+                                if (result.Links3 !== "") {
+                                    const container = document.createElement("div");
+                                    container.className = "result-container";
+
+                                    const fieldsToShow = [
+                                        { key: "Issued to:", value: result["Full Name"] },
+                                        { key: "Certificate Name:", value: getFirstEntry(result["Interested in:"]) },
+                                        { key: "Issued on:", value: result["Date"] },
+                                        { key: "Public key:", value: result["Links3"] }
+                                    ];
+
+                                    fieldsToShow.forEach(field => {
+                                        const row = document.createElement("p");
+                                        row.textContent = `${field.key} ${field.value}`;
+                                        container.appendChild(row);
+                                    });
+
+                                    const viewCertificateButton = document.createElement("button");
+                                    viewCertificateButton.textContent = "View Certificate";
+                                    viewCertificateButton.addEventListener("click", () => {
+                                        window.location.href = `result.html?data=${encodeURIComponent(JSON.stringify(result))}`;
+                                    });
+                                    container.appendChild(viewCertificateButton);
+
+                                    resultDiv.appendChild(container);
+                                }
+                            });
+                        } else {
+                            resultDiv.innerHTML = "No data found for the provided search criteria or no certificate link available.";
+                        }
+                    })
+                    .catch(error => {
+                        console.error("Error fetching data:", error);
+                    });
+            });
+
+            // Helper function to get the first entry from a comma-separated list
+            function getFirstEntry(str) {
+                const entries = str.split(",");
+                return entries.length > 0 ? entries[0].trim() : str;
+            }
+        });
+    </script>
+</body>
+</html>

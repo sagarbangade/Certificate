@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Result</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Search Result</h1>
+        <div id="result">
+            <!-- The following elements will be populated by JavaScript -->
+            <p><strong>Issued to:</strong> <span id="fullName1"></span></p>
+            <p><strong>Issued to:</strong> <span id="fullName2"></span></p>
+            <p><strong>Certificate Name:</strong> <span id="certificateName"></span></p>
+            <p><strong>Issued on:</strong> <span id="issuedDate"></span></p>
+            <p><strong>Public key:</strong> <span id="publicKey"></span></p>
+            <img id="certificateImage" src="" alt="Certificate" style="max-width: 100%; height: auto;">
+            <a id="downloadButton" href="" download="certificate.jpg" style="display: block; margin-top: 10px;">Download Certificate</a>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const resultDiv = document.getElementById("result");
+
+            // Get data from query parameter
+            const urlParams = new URLSearchParams(window.location.search);
+            const data = JSON.parse(decodeURIComponent(urlParams.get("data")));
+
+            // Populate HTML elements with data
+            const fullNameElement1 = document.getElementById("fullName1");
+            const fullNameElement2 = document.getElementById("fullName2");
+
+            const certificateNameElement = document.getElementById("certificateName");
+            const issuedDateElement = document.getElementById("issuedDate");
+            const publicKeyElement = document.getElementById("publicKey");
+            const certificateImageElement = document.getElementById("certificateImage");
+            const downloadButtonElement = document.getElementById("downloadButton");
+
+
+            fullNameElement1.textContent = data["Full Name"];
+            fullNameElement2.textContent = data["Full Name"];
+            certificateNameElement.textContent = getFirstEntry(data["Interested in:"]);
+            issuedDateElement.textContent = data["Date"];
+            publicKeyElement.textContent = data["Links3"];
+
+            if (data["Links3"]) {
+                certificateImageElement.src = `https://drive.google.com/uc?id=${data["Links3"]}`;
+                downloadButtonElement.href = `https://drive.google.com/uc?export=download&id=${data["Links3"]}`;
+            }
+
+            // Helper function to get the first entry from a comma-separated list
+            function getFirstEntry(str) {
+                const entries = str.split(",");
+                return entries.length > 0 ? entries[0].trim() : str;
+            }
+        });
+    </script>
+</body>
+</html>
