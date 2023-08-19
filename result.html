@@ -314,7 +314,6 @@
 
 
 
-
 // Function to replace the loader with the image
 function replaceLoaderWithImage() {
     var loaders = document.querySelectorAll(".loader");
@@ -325,12 +324,31 @@ function replaceLoaderWithImage() {
         loader.style.display = "none";
     });
     images.forEach(function (image) {
-        image.style.display = "block";
+        image.style.display = "block"; // Show the image
     });
 }
 
-// Call the function after 3 seconds to replace the loader with the image
-setTimeout(replaceLoaderWithImage, 3000);
+// Function to handle button click
+function handleButtonClick() {
+    var loaders = document.querySelectorAll(".loader");
+    var images = document.querySelectorAll(".loading-image");
+
+    // Show the loaders and hide the images
+    loaders.forEach(function (loader) {
+        loader.style.display = "block";
+    });
+    images.forEach(function (image) {
+        image.style.display = "none";
+    });
+
+    // Set a timeout to replace the loaders with the image after 3 seconds
+    setTimeout(replaceLoaderWithImage, 3000);
+}
+
+// Attach the click event handler to the button
+var verifyButton = document.querySelector("[data-bs-target='#myAccordion']");
+verifyButton.addEventListener("click", handleButtonClick);
+
 
 		</script>
 	</body>
