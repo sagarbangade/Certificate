@@ -74,7 +74,7 @@
 						<div class="row">
 							<div class="col-xs-12">
 								<!-- here use image of gdrive using "Links3" id -->
-								<img src="" alt="certificate" id="certificateImage" style="width: 80%" />
+								<img src="" alt="certificate" id="certificateImage" style="width: 100%" />
 								
 							</div>
 						</div>
@@ -101,17 +101,18 @@
 									<div class="row">
 										<div class="col">
 											<h5 class="subtitle">
-												<span class="text-primary">Certificate Name: </span> <span id="certificateName"></span>
+												<span class="text-primary">Certificate Name: </span> 
 												<!-- here use "Interested in:" data  -->
 											</h5>
-											<p class="subtitleTitle information"></p>
+											<!-- <span id="certificateName"></span> -->
+											<p class="subtitleTitle information" id="certificateName"></p>
 										</div>
 									</div>
 									<div class="row">
 										<div class="col">
-											<h5 class="subtitle"><span class="text-primary">Issued to: </span><span id="fullName2"></span></h5>	<!-- here use data of "Full Name"  -->
-
-											<p class="nameTitle information"></p>
+											<h5 class="subtitle"><span class="text-primary">Issued to: </span></h5>	<!-- here use data of "Full Name"  -->
+											<!-- <span id="fullName2"></span> -->
+											<p class="nameTitle information" id="fullName2"></p>
 										</div>
 									</div>
 									<div class="row">
@@ -123,9 +124,10 @@
 									</div>
 									<div class="row">
 										<div class="col">
-											<h6 class="subtitle"><span class="text-primary">Issued on: </span><span id="issuedDate"></span></h6>
+											<h6 class="subtitle"><span class="text-primary">Issued on: </span></h6>
 											<!-- use "Date"  -->
-											<p id="issuedOn" class="information"></p>
+											<!-- <span id="issuedDate"></span> -->
+											<p id="issuedDate" class="information"></p>
 										</div>
 									</div>
 									<!-- <div class="row">
@@ -136,9 +138,9 @@
 									</div> -->
 									<div class="row">
 										<div class="col">
-											<h6 class="subtitle"><span class="text-primary">Public key: </span><span id="publicKey"></span></h6>
+											<h6 class="subtitle"><span class="text-primary">Public key: </span></h6><p class="information" id="publicKey"></p>
 											<!-- use "Links3"  -->
-											<p id="publicKey" class="information"></p>
+											<!-- <p id="publicKey" class="information"></p> -->
 										</div>
 									</div>
 								</div>
@@ -175,7 +177,7 @@
 															<div class="loader"></div>
 															<img class="loading-image" style="width: 45px; height: 45px; display: none" src="assets\img\Vlogo.png" />
 														</div>
-														<div class="col-8 loading-text"style="margin-top: 20px">Checking certificate has not been tampered with</div>
+														<div class="col-9 my-auto loading-text"style="margin-top: 20px">Checking certificate has not been tampered with</div>
 													</div>
 													
 													<div class="row gx-1" style="margin-top: 20px">
@@ -183,7 +185,7 @@
 															<div class="loader"></div>
 															<img class="loading-image" style="width: 45px; height: 45px; display: none" src="assets\img\Vlogo.png" />
 														</div>
-														<div class="col-8 loading-text"style="margin-top: 20px">Checking certificate has not expired</div>
+														<div class="col-9 my-auto loading-text"style="margin-top: 20px">Checking certificate has not expired</div>
 													</div>
 													
 													<div class="row gx-1" style="margin-top: 20px">
@@ -191,7 +193,7 @@
 															<div class="loader"></div>
 															<img class="loading-image" style="width: 45px; height: 45px; display: none" src="assets\img\Vlogo.png" />
 														</div>
-														<div class="col-8 loading-text"style="margin-top: 20px">Checking not revoked by issuer</div>
+														<div class="col-9 my-auto loading-text"style="margin-top: 20px">Checking not revoked by issuer</div>
 													</div>
 													
 													<div class="row gx-1" style="margin-top: 20px">
@@ -199,7 +201,7 @@
 															<div class="loader"></div>
 															<img class="loading-image" style="width: 45px; height: 45px; display: none" src="assets\img\Vlogo.png" />
 														</div>
-														<div class="col-8 loading-text"style="margin-top: 20px">Checking authenticity</div>
+														<div class="col-9 my-auto loading-text"style="margin-top: 20px">Checking authenticity</div>
 													</div>
 													
 													<div class="row gx-1" style="margin-top: 20px">
@@ -207,7 +209,7 @@
 															<div class="loader"></div>
 															<img class="loading-image" style="width: 45px; height: 45px; display: none" src="assets\img\Vlogo2.png" />
 														</div>
-														<div class="col-8 loading-text"style="margin-top: 20px">This is a valid certificate</div>
+														<div class="col-9 my-auto loading-text"style="margin-top: 20px">This is a valid certificate</div>
 													</div>
 												</div>
 												
