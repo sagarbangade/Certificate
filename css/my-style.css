@@ -49,7 +49,8 @@
 .loader-container {
     display: flex; /* Use flex display to align items horizontally */
     align-items: center; /* Center items vertically within the container */
-    margin-top: 20px; /* Adjust as needed */
+    margin-top: 20px;
+	width: auto;
 }
 
 .loader {
@@ -69,6 +70,25 @@
 .loading-text {
     margin-left: 10px; /* Adjust spacing between loader and text */
 }
+
+  
+  /* Media queries for responsiveness */
+  @media (max-width: 768px) {
+	/* Adjust loader and image styles for smaller screens */
+	.loader {
+	border: 4px solid #f3f3f3;
+    border-top: 4px solid #9e0000;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    animation: spin 2s linear infinite;
+	}
+  
+	.loading-image {
+	  /* Adjust image styles */
+	}
+  }
+  
 
 
 @keyframes spin {
